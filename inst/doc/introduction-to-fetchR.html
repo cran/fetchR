@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -12,7 +12,7 @@
 
 <meta name="author" content="Blake Seers" />
 
-<meta name="date" content="2017-03-16" />
+<meta name="date" content="2017-04-28" />
 
 <title>Calculating Wind Fetch in R</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Calculating Wind Fetch in R</h1>
 <h4 class="author"><em>Blake Seers</em></h4>
-<h4 class="date"><em>2017-03-16</em></h4>
+<h4 class="date"><em>2017-04-28</em></h4>
 
 
 
@@ -80,6 +80,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Wind fetch is typically calculated many times for vectors pointing in different directions so an average fetch length for a location can be calculated. The average fetch length is a reasonable measure of the overall wind exposure for a particular location. A subset of these vectors may also be chosen to calculate the average northerly fetch component, for example, by averaging the length of all the fetch vectors within the northerly quadrant between 315 and 45 degree angles. This process of calculating fetch vectors for multiple directions and averaging their lengths can be extremely time-consuming and tedious, particularly if a large number of fetch vectors are required at many locations.</p>
 <p>The <strong>fetchR</strong> package calculates and summarises fetch vector lengths to assess the wind exposure of any marine location on Earth. It also provides methods to assist in the visualisation of the wind exposure, and allows the user to export the fetch vectors and lengths as a KML (or CSV) file.</p>
 <p>This short vignette provides an introduction to the <strong>fetchR</strong> package by using an example for calculating the wind fetch at 3 separate coastal locations around New Zealand. All the required steps are documented and all the code is available to reproduce this example and to build upon these fundamentals to suit individual requirements.</p>
+<div id="online-application" class="section level2">
+<h2>Online application</h2>
+<p>To use the <strong>fetchR</strong> package without even needing <strong>R</strong>, check out the <a href="http://windfetch.cer.auckland.ac.nz/">online version</a>.</p>
+</div>
+</div>
+<div id="typical-usage" class="section level1">
+<h1>Typical usage</h1>
 <p>The remaining sections are set out in the order of the intended, typical usage of <strong>fetchR</strong>:</p>
 <ol style="list-style-type: decimal">
 <li><p>Create the coastline geography layer</p>
@@ -247,7 +254,7 @@ my_fetch_latlon.df =<span class="st"> </span><span class="kw">as</span>(my_fetch
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

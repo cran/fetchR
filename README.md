@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build Status](https://travis-ci.org/blasee/fetchR.svg)](https://travis-ci.org/blasee/fetchR)
+[![Build Status](https://travis-ci.org/blasee/fetchR.svg)](https://travis-ci.org/blasee/fetchR) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fetchR)](https://cran.r-project.org/package=fetchR) [![](http://cranlogs.r-pkg.org/badges/fetchR)](https://cran.r-project.org/package=fetchR)
 
 Wind fetch
 ==========
@@ -11,16 +11,19 @@ Why **fetchR**?
 
 Averaging the wind fetch for numerous directions at the same location is a reasonable measure of the overall wind exposure. This process of calculating wind fetch can be extremely time-consuming and tedious, particularly if a large number of fetch vectors are required at many locations. The **fetchR** package calculates wind fetch for any marine location on Earth. There are also plot methods to help visualise the wind exposure at the various locations, and methods to output the fetch vectors to a KML file for further investigation.
 
+Shiny application
+=================
+
+To use the **fetchR** package without even needing **R**, check out the [online version](http://windfetch.cer.auckland.ac.nz/).
+
 Installation
 ============
 
-You can install the latest version of **fetchR** from GitHub.
+You can install and load the latest version of **fetchR** from CRAN.
 
 ``` r
-if (!require(devtools))
-  install.packages("devtools")
-
-devtools::install_github("blasee/fetchR", build_vignettes = TRUE)
+# Install fetchR
+install.packages("fetchR")
 
 # Load the fetchR package
 library(fetchR)
@@ -33,6 +36,10 @@ If you already have a `SpatialPolygons` object representing the coastline and su
 
 ![Map showing the projected SpatialPolygons (filled grey polygons) and SpatialPoints (black crosses) objects.](./vignettes/figures/proj.png)
 
+##### Note
+
+The data for the polygon layer was sourced from [Land Information New Zealand](https://data.linz.govt.nz/layer/1153-nz-coastlines-and-islands-polygons-topo-150k/)[1].
+
 ``` r
 # Calculate wind fetch by passing in the projected SpatialPolygons object (nz_poly_proj)
 # and the projected SpatialPoints object (fetch_locs_proj) to the fetch function.
@@ -40,10 +47,6 @@ my_fetch_proj = fetch(nz_poly_proj, fetch_locs_proj)
 
 my_fetch_proj
 ```
-
-##### Note
-
-The data for the polygon layer was sourced from [Land Information New Zealand](https://data.linz.govt.nz/layer/1153-nz-coastlines-and-islands-polygons-topo-150k/)[1].
 
     #> Is projected : TRUE
     #> Max distance : 300 km
@@ -78,7 +81,7 @@ Export to a KML file
 
 ``` r
 # Export the fetch vectors to a KML file for further investigation
-kml(my_fetch_proj)
+kml(my_fetch_proj, colour = "white")
 ```
 
 Note that the distances calculated in Google Earth are (almost) the same as the distances calculated with **fetchR**. This can be seen in the KML output as the fetch vector at 90 degrees for the Foveaux Strait site is 300km (the maximum distance by default) in both **fetchR** and Google Earth, although these algorithms differ.
@@ -96,6 +99,28 @@ vignette("introduction-to-fetchR")
 
 # Reproduce a simple example
 example(fetch)
+```
+
+Citation
+========
+
+``` r
+citation("fetchR")
+#> 
+#> To cite package 'fetchR' in publications use:
+#> 
+#>   Blake Seers (2017). fetchR: Calculate Wind Fetch in R. R package
+#>   version 2.1-0. https://cran.r-project.org/package=fetchR
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {fetchR: Calculate Wind Fetch in R},
+#>     author = {Blake Seers},
+#>     year = {2017},
+#>     note = {R package version 2.1-0},
+#>     url = {https://cran.r-project.org/package=fetchR},
+#>   }
 ```
 
 [1] This README contains data that was sourced from Land Information New Zealand without adaptation that is protected under CC-By Land Information New Zealand.
