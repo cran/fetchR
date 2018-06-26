@@ -8,7 +8,7 @@
 #' 
 #' The function takes a \code{\link[sp]{SpatialPolygons-class}} object 
 #' (\code{polygon_layer}) that represents the coastline, surrounding islands, 
-#' and any other obstructions, and calculates the wind fetch for every specifed 
+#' and any other obstructions, and calculates the wind fetch for every specified 
 #' direction. This is calculated for all the user-defined sites, that are 
 #' represented as the point geometries in a 
 #' \code{\link[sp]{SpatialPoints-class}} object.
@@ -159,8 +159,8 @@ fetch = function(polygon_layer, site_layer, max_dist = 300, n_directions = 9,
     stop("n_directions must be a single integer.", call. = FALSE)
   n_directions = round(n_directions)
   
-  if (n_directions < 1 || n_directions > 20)
-    stop("n_directions must be between 1 and 20.", call. = FALSE)
+  if (n_directions < 1 || n_directions > 90)
+    stop("n_directions must be between 1 and 90.", call. = FALSE)
   
   if (!missing(site_names)){
     site_names = as.character(site_names)
